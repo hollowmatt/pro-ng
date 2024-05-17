@@ -16,18 +16,18 @@ class Product {
   price: number
   category?: string
 
+  printDetails() {
+    if (this.category != undefined) {
+        console.log(`Name: ${this.name}, Price: ${this.price}, ` 
+            + `Category: ${this.category}`);    
+    } else {
+        console.log(`Name: ${this.name}, Price: ${this.price}`);    
+    }        
+  }
 }
 
 let hat = new Product("Hat", 10);
 let boots = new Product("boots", 100, "snow boots");
 
-function pDeets(product: {name: string, price: number, category?: string}) {
-  if (product.category != undefined) {
-    console.log(`Name: ${product.name}, Price: ${product.price}, Category: ${product.category}`)
-  } else {
-    console.log(`Name: ${product.name}, Price: ${product.price}`);
-  }
-}
-
-pDeets(hat);
-pDeets(boots);
+hat.printDetails();
+boots.printDetails();
