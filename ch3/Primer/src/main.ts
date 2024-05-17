@@ -5,9 +5,9 @@ import { AppComponent } from './app/app.component';
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
 
-function writeValue(val: string | null) {
+function writeValue(val?: string) {
   console.log(`Value: ${val ?? "Falback value"}`)
 }
 
 writeValue("London");
-writeValue(null);
+writeValue();
