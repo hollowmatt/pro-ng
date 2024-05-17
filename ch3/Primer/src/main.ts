@@ -5,11 +5,12 @@ import { AppComponent } from './app/app.component';
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
 
-function writeValue(val: string = "default value", ...extraInfo: string []) {
-  console.log(`Value: ${val ?? "Fallback value"}, Extras: ${extraInfo}`)
+function getUKCapital() : string {
+  return "London";
 }
 
-writeValue("London", "raining", "cold");
-writeValue("Paris");
-writeValue("Pittsburgh", "armpit");
-writeValue();
+function writeCity(f: () => string) {
+  console.log(`City: ${f()}`)
+}
+
+writeCity(getUKCapital);
