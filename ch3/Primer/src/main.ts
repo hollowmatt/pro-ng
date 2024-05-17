@@ -5,19 +5,29 @@ import { AppComponent } from './app/app.component';
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
 
-function getUKCapital() : string {
-  return "London";
+class Product {
+  constructor(name: string, price: number, category?: string) {
+    this.name = name;
+    this.price = price;
+    this.category = category;
+  }
+
+  name: string
+  price: number
+  category?: string
+
 }
 
-function writeCity(f: () => string) {
-  console.log(`City: ${f()}`)
+let hat = new Product("Hat", 10);
+let boots = new Product("boots", 100, "snow boots");
+
+function pDeets(product: {name: string, price: number, category?: string}) {
+  if (product.category != undefined) {
+    console.log(`Name: ${product.name}, Price: ${product.price}, Category: ${product.category}`)
+  } else {
+    console.log(`Name: ${product.name}, Price: ${product.price}`);
+  }
 }
 
-writeCity(getUKCapital);
-
-let hat = {
-  name: "cap",
-  price: 10
-}
-
-console.log(`Name: ${hat.name}, Price: ${hat.price}`);
+pDeets(hat);
+pDeets(boots);
