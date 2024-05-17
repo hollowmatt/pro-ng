@@ -5,7 +5,7 @@ import { AppComponent } from './app/app.component';
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
 
-function writeValue(val?: string) {
+function writeValue(val: string = "default value") {
   console.log(`Value: ${val ?? "Falback value"}`)
 }
 
