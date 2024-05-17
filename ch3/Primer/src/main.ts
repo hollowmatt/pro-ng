@@ -14,3 +14,10 @@ function writeCity(f: () => string) {
 }
 
 writeCity(getUKCapital);
+
+let hat = {
+  name: "cap",
+  price: 10
+}
+
+console.log(`Name: ${hat.name}, Price: ${hat.price}`);
