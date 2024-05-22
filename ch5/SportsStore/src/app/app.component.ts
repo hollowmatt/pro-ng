@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { StoreComponent } from './store/store.component';
 
 @Component({
   selector: 'app',
   standalone: true,
-  imports: [],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [StoreComponent],
+  template: "<store></store>",
+  
 })
 export class AppComponent {
   title = 'SportsStore';
