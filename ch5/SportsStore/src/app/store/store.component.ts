@@ -11,5 +11,11 @@ import { StaticDataSource } from '../model/static.datasource';
 })
 
 export class StoreComponent {
-  
+  products: Signal<Product[]>;
+  categories: Signal<String[]>;
+
+  constructor(private repository: ProductRepository) {
+    this.products = repository.products;
+    this.categories = repository.categories;
+  }
 }
