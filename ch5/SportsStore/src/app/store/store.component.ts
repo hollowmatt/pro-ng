@@ -6,7 +6,7 @@ import { StaticDataSource } from '../model/static.datasource';
 @Component({
   standalone: true,
   selector: "store",
-  templateUrl: "store.component.html",
+  templateUrl: "./store.component.html",
   providers: [ProductRepository, StaticDataSource]
 })
 
