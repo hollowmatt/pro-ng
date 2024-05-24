@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 
 export class StoreComponent {
   products: Signal<Product[]>;
-  categories: Signal<String[]>;
+  categories: Signal<string[]>;
   selectedCategory = signal<string | undefined>(undefined);
 
   constructor(private repository: ProductRepository) {
