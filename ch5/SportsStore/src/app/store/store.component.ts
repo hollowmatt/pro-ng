@@ -2,11 +2,13 @@ import { Component, Signal } from '@angular/core';
 import { Product } from '../model/product.model';
 import { ProductRepository } from '../model/product.repository';
 import { StaticDataSource } from '../model/static.datasource';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   selector: "store",
   templateUrl: "./store.component.html",
+  imports: [CommonModule],
   providers: [ProductRepository, StaticDataSource]
 })
 
