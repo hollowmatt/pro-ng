@@ -3,7 +3,8 @@ import { Product } from '../model/product.model';
 import { ProductRepository } from '../model/product.repository';
 import { StaticDataSource } from '../model/static.datasource';
 import { CommonModule } from '@angular/common';
-
+import { CartSummaryComponent } from './cartSummary.component';
+import { Cart } from '../model/cart.model';
 @Component({
   standalone: true,
   selector: "store",
@@ -21,7 +22,7 @@ export class StoreComponent {
   pagedProducts: Signal<Product[]>;
   pageNumbers: Signal<number[]>;
 
-  constructor(private repository: ProductRepository) {
+  constructor(private repository: ProductRepository, private cart: Cart) {
     this.products = computed(() => {
       if(this.selectedCategory() == undefined) {
         return this.repository.products();
@@ -56,5 +57,9 @@ export class StoreComponent {
   changePageSize(newSize: number) {
     this.productsPerPage.set(Number(newSize));
     this.changePage(1);
+  }
+
+  addProductToCart(product: Product) {
+    this.cart.addLine(product);
   }
 }
