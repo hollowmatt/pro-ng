@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import { HomeComponent } from './home/home.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HomeComponent],
+  imports: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
+
 export class AppComponent {
-  title = 'homes';
+  title = 'dad-jokes';
+  joke: string = '';
+
 }
