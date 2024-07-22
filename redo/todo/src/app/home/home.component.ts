@@ -13,7 +13,6 @@ import { CommonModule } from '@angular/common';
 })
 
 export class HomeComponent {
-
   housingLocationList: HousingLocation [] = [];
   housingService: HousingService = inject(HousingService);
 
