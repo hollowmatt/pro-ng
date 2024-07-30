@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'primer';
+
+  writeValue(val: string="defaulat") {
+    val === "" ? null : val;
+    console.log(`Value: ${val ?? "Fallback Value"}`);
+  }
 }
