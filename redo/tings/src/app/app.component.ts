@@ -26,6 +26,14 @@ export class AppComponent {
   }
 
   get items(): readonly TodoItem[] {
-    return this.list.items;
+    return this.list.items.filter(item => this.showComplete || !item.complete);
   }
+
+  addItem(item: string) {
+    if(item != "") {
+      this.list.addItem(item);
+    } 
+  }
+
+  showComplete: boolean=false;
 }
