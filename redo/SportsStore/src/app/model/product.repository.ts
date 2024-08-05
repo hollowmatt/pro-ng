@@ -2,7 +2,7 @@ import { Injectable, Signal, computed } from "@angular/core";
 import { Product } from "./product.model";
 import { StaticDataSource } from "./tempStatic.datasource";
 
-@Injectable
+@Injectable()
 export class ProductRepository {
   products: Signal<Product[]>;
   categories: Signal<string[]>;
