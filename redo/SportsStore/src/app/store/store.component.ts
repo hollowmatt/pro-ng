@@ -49,7 +49,7 @@ export class StoreComponent {
   }
 
   changePageSize(newSize: number) {
-    this.productsPerPage.set(newSize);
+    this.productsPerPage.set(Number(newSize));
     this.changePage(1);
   }
 }
