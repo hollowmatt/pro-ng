@@ -1,6 +1,5 @@
 import { Injectable, Signal, WritableSignal, computed, signal } from "@angular/core";
 import { Product } from "./product.model";
-import { single } from "rxjs";
 
 @Injectable()
 export class Cart {
@@ -24,24 +23,44 @@ export class Cart {
   }
 
   addLine(product: Product, quantity: number = 1) {
-    //fill in
+    this.linesSignal.update(linesArray => {
+      let line = linesArray.find(l => l.product.id == product.id);
+      if (line != undefined) {
+        line.quantity += quantity;
+      } else {
+        linesArray.push(new CartLine(product, quantity));
+      }
+      return linesArray;
+    });
   }
 
   updateQuantity(product: Product, quantity: number) {
-    //fill in
+    this.linesSignal.update(linesArray => {
+        let line = linesArray.find(l => l.product.id == product.id);
+        if (line != undefined) {
+            line.quantity = Number(quantity);
+        }
+        return linesArray;
+    });
   }
 
   removeLine(id: number) {
-    //fill in
+    this.linesSignal.update(linesArray => {
+      let index = linesArray.findIndex(line => line.product.id == id);
+      linesArray.splice(index, 1);
+      return linesArray;
+    })     
   }
 
   clear() {
-    this.linesSignal.set([]);
+      this.linesSignal.set([]);
   }
 }
 
 export class CartLine {
+
   constructor(public product: Product, public quantity: number) {}
+
   get lineTotal() {
     return this.quantity * (this.product.price ?? 0);
   }
