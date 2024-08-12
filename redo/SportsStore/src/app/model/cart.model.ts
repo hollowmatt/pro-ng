@@ -23,13 +23,16 @@ export class Cart {
   }
 
   addLine(product: Product, quantity: number = 1) {
+    console.log("add a line");
     this.linesSignal.update(linesArray => {
       let line = linesArray.find(l => l.product.id == product.id);
+      console.log(line);
       if (line != undefined) {
         line.quantity += quantity;
       } else {
         linesArray.push(new CartLine(product, quantity));
       }
+      console.log(linesArray);
       return linesArray;
     });
   }
