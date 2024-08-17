@@ -15,7 +15,6 @@ export class StoreComponent {
   productsPerPage = signal(4);
   selectedPage = signal(1);
   pagedProducts: Signal<Product[]>;
-  // pageNumbers: Signal<number[]>;
   pageCount: Signal<number>;
 
   constructor(private repository: ProductRepository, private cart: Cart) {
@@ -37,10 +36,6 @@ export class StoreComponent {
       return this.products().slice(pageIndex(), pageIndex() + this.productsPerPage());
     })
 
-    // this.pageNumbers = computed(() => {
-    //   return Array(Math.ceil(this.products().length / this.productsPerPage())).fill(0).map((x, i) => i + 1);
-    // })
-
     this.pageCount = computed(() => {
       return Math.ceil(this.products().length / this.productsPerPage());
     })
@@ -61,7 +56,5 @@ export class StoreComponent {
 
   addProductToCart(product: Product) {
     this.cart.addLine(product);
-    console.log("add to cart: " + product.name);
-    console.log("cart status:" + this.cart.summary().itemCount);
   }
 }

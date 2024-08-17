@@ -8,13 +8,14 @@ export class Cart {
 
   constructor() {
     this.linesSignal = signal([]);
+
     this.summary = computed(() => {
       let newSummary = new CartSummary();
       this.linesSignal().forEach(line => {
         newSummary.itemCount += line.quantity;
         newSummary.cartPrice += line.lineTotal;
       });
-      return newSummary
+      return newSummary;
     })
   }
 
@@ -23,7 +24,6 @@ export class Cart {
   }
 
   addLine(product: Product, quantity: number = 1) {
-    console.log("add a line");
     this.linesSignal.update(linesArray => {
       let line = linesArray.find(l => l.product.id == product.id);
       console.log(line);
@@ -32,7 +32,6 @@ export class Cart {
       } else {
         linesArray.push(new CartLine(product, quantity));
       }
-      console.log(linesArray);
       return linesArray;
     });
   }

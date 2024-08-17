@@ -4,7 +4,7 @@
       <span *ngIf="cart.summary().itemCount > 0">
           {{ cart.summary().itemCount }} item(s)
           {{ cart.summary().cartPrice 
-              | currency:"USD":"symbol":"2.2-2" }}
+              | currency:"GBP":"symbol":"2.2-2" }}
       </span>
       <span *ngIf="cart.summary().itemCount == 0">
           (empty)
