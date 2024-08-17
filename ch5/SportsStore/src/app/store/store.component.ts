@@ -9,8 +9,8 @@ import { Cart } from '../model/cart.model';
   standalone: true,
   selector: "store",
   templateUrl: "./store.component.html",
-  imports: [CommonModule],
-  providers: [ProductRepository, StaticDataSource]
+  imports: [CommonModule, CartSummaryComponent],
+  providers: [ProductRepository, StaticDataSource, Cart]
 })
 
 export class StoreComponent {
