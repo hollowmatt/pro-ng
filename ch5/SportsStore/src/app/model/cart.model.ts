@@ -23,29 +23,32 @@ export class Cart {
   }
 
   addLine(product: Product, quantity: number = 1) {
-    this.linesSignal.mutate(linesArray => {
+    this.linesSignal.update(linesArray => {
       let line = linesArray.find(l => l.product.id == product.id);
       if (line != undefined) {
         line.quantity += quantity;
       } else {
         linesArray.push(new CartLine(product, quantity));
       }
+      return linesArray;
     });
   }
 
   updateQuantity(product: Product, quantity: number) {
-    this.linesSignal.mutate(linesArray => {
+    this.linesSignal.update(linesArray => {
         let line = linesArray.find(l => l.product.id == product.id);
         if (line != undefined) {
             line.quantity = Number(quantity);
         }
+        return linesArray;
     });
   }
 
   removeLine(id: number) {
-      this.linesSignal.mutate(linesArray => {
+      this.linesSignal.update(linesArray => {
           let index = linesArray.findIndex(l => l.product.id == id);
           linesArray.splice(index, 1);
+          return linesArray;
       });
   }
 
