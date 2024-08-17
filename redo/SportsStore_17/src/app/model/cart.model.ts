@@ -1,27 +1,28 @@
-import { Injectable, Signal, WritableSignal, computed, signal } from "@angular/core";
+import { Injectable, Signal, WritableSignal, computed, signal } 
+    from "@angular/core";
 import { Product } from "./product.model";
 
 @Injectable()
 export class Cart {
-  private linesSignal: WritableSignal<CartLine[]>;
-  public summary: Signal<CartSummary>;
+    private linesSignal: WritableSignal<CartLine[]>;
+    public summary: Signal<CartSummary>;
 
-  constructor() {
-    this.linesSignal = signal([]);
+    constructor() {
+        this.linesSignal = signal([]);
 
-    this.summary = computed(() => {
-      let newSummary = new CartSummary();
-      this.linesSignal().forEach(line => {
-        newSummary.itemCount += line.quantity;
-        newSummary.cartPrice += line.lineTotal;
-      });
-      return newSummary;
-    })
-  }
+        this.summary = computed(() => {
+            let newSummary = new CartSummary();
+            this.linesSignal().forEach(l => {
+                newSummary.itemCount += l.quantity;
+                newSummary.cartPrice += l.lineTotal;
+            });
+            return newSummary;
+        })
+    }
 
-  get lines(): Signal<CartLine[]> {
-    return this.linesSignal.asReadonly();
-  }
+    get lines(): Signal<CartLine[]> {
+        return this.linesSignal.asReadonly();
+    }
 
   addLine(product: Product, quantity: number = 1) {
     this.linesSignal.update(linesArray => {
@@ -60,11 +61,12 @@ export class Cart {
 }
 
 export class CartLine {
-
-  constructor(public product: Product, public quantity: number) {}
+    
+  constructor(public product: Product,
+      public quantity: number) {}
 
   get lineTotal() {
-    return this.quantity * (this.product.price ?? 0);
+      return this.quantity * (this.product.price ?? 0);
   }
 }
 
