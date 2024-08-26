@@ -1,6 +1,6 @@
 import { Injectable, Signal, signal } from "@angular/core";
 import { Product } from "./product.model";
-import { Order } from "./orrder.model";
+import { Order } from "./order.model";
 import { Observable, from } from "rxjs";
 
 @Injectable()
